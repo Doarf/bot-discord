@@ -11,7 +11,11 @@
     "node": ">=18"
   },
   "license": "MIT",
+  "overrides": {
+    "youtubei.js": "^17.2.0"
+  },
   "dependencies": {
+    "@snazzah/davey": "^0.1.12",
     "better-sqlite3": "^12.11.1",
     "discord-player": "^7.2.0",
     "discord-player-youtubei": "^2.0.0",

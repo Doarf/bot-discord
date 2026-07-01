@@ -50,8 +50,19 @@ player.events.on('error', (queue, error) => {
   console.error('[Musique] Erreur de file :', error.message);
 });
 
+// Logs de diagnostic (console uniquement), activés avec DP_DEBUG=1 dans .env
+if (process.env.DP_DEBUG === '1') {
+  player.events.on('playerStart', (queue, track) => console.log('[DEBUG] playerStart :', track.title));
+  player.events.on('playerFinish', (queue, track) => console.log('[DEBUG] playerFinish :', track.title));
+  player.events.on('emptyQueue', () => console.log('[DEBUG] emptyQueue'));
+  player.events.on('connection', () => console.log('[DEBUG] connecté au salon vocal'));
+  player.events.on('debug', (queue, message) => console.log('[DEBUG queue]', message));
+  player.on('debug', (message) => console.log('[DEBUG player]', message));
+}
+
 async function main() {
-  await player.extractors.register(YoutubeiExtractor, {});
+  // useYoutubeDL : extraction du flux audio via yt-dlp, plus robuste face aux protections YouTube
+  await player.extractors.register(YoutubeiExtractor, { useYoutubeDL: true });
   await client.login(process.env.DISCORD_TOKEN);
 }
 
