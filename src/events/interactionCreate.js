@@ -5,6 +5,13 @@ module.exports = {
   async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
+    if (!interaction.inGuild()) {
+      return interaction.reply({
+        content: '❌ Les commandes ne sont utilisables que sur un serveur.',
+        flags: MessageFlags.Ephemeral,
+      });
+    }
+
     const command = interaction.client.commands.get(interaction.commandName);
     if (!command) return;
 

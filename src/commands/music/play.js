@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const { useMainPlayer } = require('discord-player');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
     if (!channel) {
       return interaction.reply({
         content: '❌ Tu dois être dans un salon vocal pour utiliser cette commande.',
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
