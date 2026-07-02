@@ -2,6 +2,8 @@
 
 <div align="center">
 
+<img src="docs/banner.svg" alt="bot-discord logo" width="120"/>
+
 **Discord bot with XP leveling and YouTube music playback**
 *discord.js · discord-player · SQLite · yt-dlp · Node.js*
 
@@ -153,6 +155,8 @@ bot-discord/
 │       ├── music/             # play, skip, stop, pause, resume, queue, nowplaying, volume
 │       └── utils/             # ping, help
 ├── data/                      # SQLite database (auto-created, git-ignored)
+├── docs/
+│   └── banner.svg             # Pixel-art logo
 ├── .env.example
 └── package.json               # youtubei.js pinned to v17 via overrides
 ```
